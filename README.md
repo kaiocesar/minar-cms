@@ -5,9 +5,11 @@ Simple login and register with Nodejs
 
 To install
 ==========
-$ git clone https://github.com/Hunteros/startLogin.git
+
+> $ git clone https://github.com/Hunteros/startLogin.git
 
 And run
 =========
 Run as sudo because the nodemon
-sudo npm start
+
+> # npm start
