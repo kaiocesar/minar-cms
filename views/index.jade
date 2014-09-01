@@ -1,8 +1,4 @@
 extends layout
 
 block content
-    - if (isAuthenticated)
-        p Ola, #{user.username}
-        a(href='/logout') Sair
-    - else
-        a(href='/login') Faça Login!
+    h1 Seja bem-vindo!

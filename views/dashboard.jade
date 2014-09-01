@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    - if (isAuthenticated)
+        include ./layout-dashboard.jade
+        p Ola, #{user.username}
+    - else
+        a(href='/login') Faça Login!

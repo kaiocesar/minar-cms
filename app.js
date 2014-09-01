@@ -5,10 +5,12 @@ var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 var mongoose = require('mongoose');
 
+// Define as rotas
 var routes = require('./routes/index'),
     signup = require('./routes/signup'),
     login = require('./routes/login'),
-    logout = require('./routes/logout');
+    logout = require('./routes/logout'),
+    dashboard = require('./routes/dashboard');
 
 var bcrypt = require('bcrypt'),
     SALT_WORK_FACTOR = 10;
@@ -37,10 +39,12 @@ app.use(passport.session());
 
 passport.use(new passportLocal.Strategy(verifyCredentials));
 
+// Usa as respectivas rotas quando chamadas
 app.use('/', routes);
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/dashboard', dashboard);
 
 mongoose.connect('mongodb://localhost/users', function (erro) {
     if (erro) {
@@ -150,7 +154,7 @@ function ensureAuthenticated(req, res, next) {
 };
 
 app.post('/login', passport.authenticate('local'), function (req, res) {
-    res.redirect('/');
+    res.redirect('/dashboard');
 });
 
 app.post('/signup', register, function (req, res) {
