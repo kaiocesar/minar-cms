@@ -1,19 +1,16 @@
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var expressSession = require('express-session');
-var mongoose = require('mongoose');
-
-// Define as rotas
-var routes = require('./routes/index'),
-    signup = require('./routes/signup'),
-    login = require('./routes/login'),
-    logout = require('./routes/logout'),
-    dashboard = require('./routes/dashboard');
-
-var bcrypt = require('bcrypt'),
-    SALT_WORK_FACTOR = 10;
+var express = require('express')
+ , path = require('path')
+ , bodyParser = require('body-parser')
+ , cookieParser = require('cookie-parser')
+ , expressSession = require('express-session')
+ , mongoose = require('mongoose')
+ , routes = require('./routes/index')
+ , createUser = require('./routes/createUser')
+ , login = require('./routes/login')
+ , logout = require('./routes/logout')
+ , dashboard = require('./routes/dashboard')
+ , bcrypt = require('bcrypt')
+ , SALT_WORK_FACTOR = 10;
 
 var passport = require('passport'),
     passportLocal = require('passport-local');
@@ -27,6 +24,7 @@ app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
 app.use(cookieParser());
 app.use(expressSession({
     secret: process.env.SESSION_SECRET || 'dCj0qrPSdog6gSgQHH8WnuoDc1lLPpn1',
@@ -41,7 +39,7 @@ passport.use(new passportLocal.Strategy(verifyCredentials));
 
 // Usa as respectivas rotas quando chamadas
 app.use('/', routes);
-app.use('/signup', signup);
+app.use('/signup', createUser);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/dashboard', dashboard);
@@ -93,6 +91,7 @@ userSchema.pre('save', function (next) {
     });
 });
 
+// Função para registrar novo usuário
 function register(req, res, next) {
     var testUser = new User({
         username: req.body.username,
@@ -107,7 +106,11 @@ function register(req, res, next) {
 
 
 User.find(function (err, res) {
-    console.log(res);
+    if (res != '') {
+        firstAcess = false
+    } else {
+        firstAcess = true
+    }
 });
 
 function verifyCredentials(username, password, done) {
@@ -119,14 +122,14 @@ function verifyCredentials(username, password, done) {
         }
         if (!user) {
             return done(null, false, {
-                message: 'Incorrect username.'
+                message: 'Usuário incorreto.'
             });
         }
         user.comparePassword(password, function (err, isMatch) {
             if (err) throw err;
             if (!isMatch) {
                 return done(null, false, {
-                    message: 'Incorrect senha.'
+                    message: 'Senha incorreta.'
                 });
             } else {
                 return done(null, user);
@@ -158,6 +161,7 @@ app.post('/login', passport.authenticate('local'), function (req, res) {
 });
 
 app.post('/signup', register, function (req, res) {
+    firstAcess = false;
     res.redirect('/');
 });
 
