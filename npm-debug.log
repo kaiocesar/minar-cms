@@ -20,7 +20,7 @@
 11 error There is likely additional logging output above.
 12 error System Linux 3.13.0-34-generic
 13 error command "/usr/bin/node" "/usr/bin/npm" "start"
-14 error cwd /home/jorge/Documentos/www/start/startLogin
+14 error cwd /home/jorge/Documentos/www/start/MINAR
 15 error node -v v0.10.31
 16 error npm -v 1.4.23
 17 error code ELIFECYCLE
