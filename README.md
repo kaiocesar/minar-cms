@@ -1,11 +1,11 @@
-startLogin
-========
+#MINAR, minando as velhas bases.
 
-Simples login e cadastro de usuário com NodeJS.
+Solução baseada em Mongoose, Express, AngularJS e NodeJS para gerencimeto de usuários.
+
 Para Instalar
 ========
 
-`$ git clone https://github.com/Hunteros/startLogin.git`
+`$ git clone https://github.com/Hunteros/MINAR.git`
 
 E iniciar
 ========
