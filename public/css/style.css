@@ -3,7 +3,8 @@
 }
 
 .form-login {
-    float: inherit!important
+    float: inherit!important;
+    margin-top: 40px;
 }
 .navbar-brand {
     padding: 5px 20px!important;    
