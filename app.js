@@ -1,17 +1,17 @@
 var express = require('express')
- , path = require('path')
- , bodyParser = require('body-parser')
- , cookieParser = require('cookie-parser')
- , expressSession = require('express-session')
- , mongoose = require('mongoose')
- , bcrypt = require('bcrypt')
- , SALT_WORK_FACTOR = 10
- , routes = require('./routes/index')
- , criarUsuario = require('./routes/criarUsuario')
- , login = require('./routes/login')
- , logout = require('./routes/logout')
- , dashboard = require('./routes/dashboard')
- , publicar = require('./routes/publicar');
+  , path = require('path')
+  , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
+  , expressSession = require('express-session')
+  , mongoose = require('mongoose')
+  , bcrypt = require('bcrypt')
+  , SALT_WORK_FACTOR = 10
+  , routes = require('./routes/index')
+  , criarUsuario = require('./routes/criarUsuario')
+  , login = require('./routes/login')
+  , logout = require('./routes/logout')
+  , dashboard = require('./routes/dashboard')
+  , publicar = require('./routes/publicar');
 
 
 var passport = require('passport'),
