@@ -4,13 +4,15 @@ var express = require('express')
  , cookieParser = require('cookie-parser')
  , expressSession = require('express-session')
  , mongoose = require('mongoose')
+ , bcrypt = require('bcrypt')
+ , SALT_WORK_FACTOR = 10
  , routes = require('./routes/index')
- , createUser = require('./routes/createUser')
+ , criarUsuario = require('./routes/criarUsuario')
  , login = require('./routes/login')
  , logout = require('./routes/logout')
  , dashboard = require('./routes/dashboard')
- , bcrypt = require('bcrypt')
- , SALT_WORK_FACTOR = 10;
+ , publicar = require('./routes/publicar');
+
 
 var passport = require('passport'),
     passportLocal = require('passport-local');
@@ -37,12 +39,21 @@ app.use(passport.session());
 
 passport.use(new passportLocal.Strategy(verifyCredentials));
 
+function loggedIn(req, res, next) {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+}
+
 // Usa as respectivas rotas quando chamadas
 app.use('/', routes);
-app.use('/signup', createUser);
+app.use('/signup', criarUsuario);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/dashboard', dashboard);
+app.use('/publicar', publicar);
 
 mongoose.connect('mongodb://localhost/users', function (erro) {
     if (erro) {
@@ -148,16 +159,9 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
-function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        next();
-    } else {
-        res.redirect('/login');
-    }
-};
 
 app.post('/login', passport.authenticate('local'), function (req, res) {
-    res.redirect('/dashboard');
+    res.redirect(req.session.returnTo || '/');
 });
 
 app.post('/signup', register, function (req, res) {
