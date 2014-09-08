@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Estrutura básica para login e cadastro de usuários.",
   "author": {
-      "name": "Jorge Bosch",
-      "email": "jorgebosch@ymail.com"
+    "name": "Jorge Bosch",
+    "email": "jorgebosch@ymail.com"
   },
   "repository": {
     "type": "git",
@@ -15,18 +15,23 @@
     "start": "node_modules/nodemon/bin/nodemon.js ./bin/www"
   },
   "dependencies": {
-    "express": "~4.2.0",
-    "express-session": "~1.7.6",
-    "static-favicon": "~1.0.0",
-    "morgan": "~1.0.0",
-    "cookie-parser": "~1.0.1",
+    "bcrypt": "~0.8.0",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.0.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.0.1",
     "debug": "~0.7.4",
     "ejs": "^1.0.0",
+    "express": "~4.2.0",
+    "express-ejs-layouts": "latest",
+    "express-load": "^1.1.14",
+    "express-session": "~1.7.6",
+    "mongoose": "~3.8.15",
+    "morgan": "~1.0.0",
+    "nodemon": "latest",
     "passport": "~0.2.0",
     "passport-local": "~1.0.0",
-    "bcrypt": "~0.8.0",
-    "mongoose": "~3.8.15",
-    "nodemon" : "latest",
+    "static-favicon": "~1.0.0",
+    "swig": "^1.4.2"
   }
 }

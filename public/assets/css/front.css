@@ -1,0 +1,11 @@
+.img-responsive, .form-login {
+    margin: 0 auto
+}
+
+.form-login {
+    float: inherit!important;
+    margin-top: 40px;
+}
+.navbar-brand {
+    padding: 5px 20px!important;    
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+	<title>Migrar CMS - <%-title%></title>
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/dasboard.css" />
+
+</head>
+<body>
+
+	<div class="container" style="padding-top:20px;">
+		<ul class="nav nav-pills">
+		  <li><a href="/">Home</a></li>
+		  <li><a href="/articles">Articles</a></li>
+		  <li><a href="/dashboard">Dashboard</a></li>
+		</ul>	
+	</div>
+
+	{% block content %}
+	{% endblock %}
+
+	<script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/angular.min.js"></script>
+
+</body>
+</html>
